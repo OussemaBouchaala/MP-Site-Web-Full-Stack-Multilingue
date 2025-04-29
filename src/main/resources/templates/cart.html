@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{cart.title}">Shopping Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}"> <!-- Optional custom CSS -->
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container mt-4">
+    <h2 class="mb-4" th:text="#{cart.title}">Shopping Cart</h2>
+
+    <div th:if="${cart == null or cart.items.isEmpty()}">
+        <p class="alert alert-info" th:text="#{cart.empty}">Your cart is empty.</p>
+        <a th:href="@{/books}" class="btn btn-primary" th:text="#{cart.continue_shopping}">Continue Shopping</a>
+    </div>
+
+    <div th:if="${cart != null and not cart.items.isEmpty()}">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th th:text="#{cart.book}">Book</th>
+                    <th th:text="#{cart.price}">Price</th>
+                    <th th:text="#{cart.quantity}">Quantity</th>
+                    <th th:text="#{cart.subtotal}">Subtotal</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${cart.items.values()}">
+                    <td th:text="${item.book.title}">Book Title</td>
+                    <td th:text="${#numbers.formatCurrency(item.book.price)}">$0.00</td>
+                    <td>
+                        <form th:action="@{/cart/update}" method="post" class="d-inline-flex align-items-center">
+                            <input type="hidden" name="bookId" th:value="${item.book.id}" />
+                            <input type="number" name="quantity" th:value="${item.quantity}" min="1" max="10" class="form-control form-control-sm me-2" style="width: 70px;"/>
+                            <button type="submit" class="btn btn-secondary btn-sm" th:text="#{cart.update}">Update</button>
+                        </form>
+                    </td>
+                    <td th:text="${#numbers.formatCurrency(item.subtotal)}">$0.00</td>
+                    <td>
+                        <form th:action="@{/cart/remove}" method="post" class="d-inline">
+                            <input type="hidden" name="bookId" th:value="${item.book.id}" />
+                            <button type="submit" class="btn btn-danger btn-sm" th:text="#{cart.remove}">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <a th:href="@{/books}" class="btn btn-secondary" th:text="#{cart.continue_shopping}">Continue Shopping</a>
+            </div>
+            <div class="col-md-6 text-end">
+                <h4><span th:text="#{cart.total}">Total</span>: <span th:text="${#numbers.formatCurrency(cart.total)}">$0.00</span></h4>
+                <!-- Link to checkout - implementation in OrderController -->
+                <a th:href="@{/order/create}" class="btn btn-success" th:text="#{cart.checkout}">Proceed to Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

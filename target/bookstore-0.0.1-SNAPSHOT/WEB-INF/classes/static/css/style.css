@@ -1,0 +1,71 @@
+/* Custom styles for Mini Bookstore */
+
+/* General styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+/* Book card styles */
+.card {
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Cart table styles */
+.table th {
+    background-color: #f8f9fa;
+}
+
+/* Form styles */
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+/* Language selector styles */
+.language-selector {
+    margin-left: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-deck {
+        display: flex;
+        flex-flow: row wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    
+    .card-deck .card {
+        flex: 0 0 calc(50% - 30px);
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-deck .card {
+        flex: 0 0 100%;
+    }
+}
