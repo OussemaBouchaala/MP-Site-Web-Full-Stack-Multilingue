@@ -15,3 +15,5 @@ INSERT INTO books (title, author, price) VALUES
 ('Brave New World', 'Aldous Huxley', 13.25),
 ('One Hundred Years of Solitude', 'Gabriel Garcia Marquez', 16.50);
 
+
+INSERT INTO users (username,email, password) VALUES ('helmi','helmi@gmail.com' , 'tpjava');

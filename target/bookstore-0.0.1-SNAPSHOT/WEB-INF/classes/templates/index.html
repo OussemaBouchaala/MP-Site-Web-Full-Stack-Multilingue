@@ -24,14 +24,16 @@
             </span>
         </p>
     </div>
-    
+
     <div class="row mt-5">
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body text-center">
                     <h5 class="card-title">📚</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Extensive Collection</h6>
-                    <p class="card-text">Browse our wide selection of books from various genres and authors.</p>
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="#{card.collection.title}">Extensive Collection</h6>
+                    <p class="card-text" th:text="#{card.collection.description}">
+                        Browse our wide selection of books from various genres and authors.
+                    </p>
                 </div>
             </div>
         </div>
@@ -39,8 +41,10 @@
             <div class="card mb-4">
                 <div class="card-body text-center">
                     <h5 class="card-title">🛒</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Easy Shopping</h6>
-                    <p class="card-text">Add books to your cart and checkout with our simple ordering process.</p>
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="#{card.shopping.title}">Easy Shopping</h6>
+                    <p class="card-text" th:text="#{card.shopping.description}">
+                        Add books to your cart and checkout with our simple ordering process.
+                    </p>
                 </div>
             </div>
         </div>
@@ -48,15 +52,17 @@
             <div class="card mb-4">
                 <div class="card-body text-center">
                     <h5 class="card-title">🌐</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Multilingual Support</h6>
-                    <p class="card-text">Enjoy our bookstore in your preferred language - English or French.</p>
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="#{card.multilingual.title}">Multilingual Support</h6>
+                    <p class="card-text" th:text="#{card.multilingual.description}">
+                        Enjoy our bookstore in your preferred language - English or French.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div th:replace="~{fragments/footer :: footer}"></div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

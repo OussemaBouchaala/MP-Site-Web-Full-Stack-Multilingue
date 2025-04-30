@@ -12,15 +12,18 @@
 <div th:replace="~{fragments/header :: header}"></div>
 
 <div class="container mt-4">
-    <h2 class="mb-4">My Orders</h2>
+    <h2 class="mb-4" th:text="#{nav.my_orders}">My Orders</h2>
 
     <div th:if="${orderHistoryError}" class="alert alert-danger" role="alert">
         <span th:text="${orderHistoryError}">Error fetching orders.</span>
     </div>
 
-    <div th:if="${orders == null || orders.isEmpty()}" class="alert alert-info" role="alert">
-        You don't have any orders yet.
+    <div th:if="${orders == null || orders.isEmpty()}"
+         th:text="#{order.empty}"
+         class="alert alert-info"
+         role="alert">
     </div>
+
 
     <div th:if="${orders != null && !orders.isEmpty()}">
         <div class="accordion" id="ordersAccordion">
