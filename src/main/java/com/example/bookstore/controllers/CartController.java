@@ -64,10 +64,5 @@ public class CartController {
         return "redirect:/cart";
     }
 
-    // Consider adding a checkout mapping later that leads to the order process
-    // @GetMapping("/checkout")
-    // public String checkout() {
-    //     // Logic to proceed to order creation
-    //     return "redirect:/order/create"; // Example redirect
-    // }
+
 }
